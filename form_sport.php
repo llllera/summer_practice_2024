@@ -73,7 +73,10 @@
                     <?php
                     $types=selectAll('types_of_sports');
                     foreach($types as $t){
-                        echo '<option value="'.$t['name'].'"' . if($t['name']==$values['sport']){print 'selected';} . '>' . $t['name'] . '</option>';
+                        if($t['name']==$values['sport']){
+                            echo '<option value="'.$t['name'].'" selected>' . $t['name'] . '</option>';
+                        }
+                       else { echo '<option value="'.$t['name'].'" >' . $t['name'] . '</option>';}
                     }
                     ?>
                     </select>
