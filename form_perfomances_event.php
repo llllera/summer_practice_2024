@@ -172,7 +172,7 @@ else {
         $stmt->bindParam(':id_member', $id_lang);
         $id_user = $id;
         $stmt->execute();
-      
+      }
       print('Данные успешно сохранены!');
     } catch (PDOException $e) {
       print('Error : ' . $e->getMessage());
