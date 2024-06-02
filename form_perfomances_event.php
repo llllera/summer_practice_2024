@@ -98,7 +98,7 @@ else {
     }
   }
   $stad ;
-  if(!empty($_POST['sport']))
+  if(!empty($_POST['stad']))
   {
     for($i = 0; $i < count($_POST['stad']); $i++)
     {
@@ -113,12 +113,12 @@ else {
         setcookie('name_error', '1', time() + 24 * 60 * 60);
         $errors = TRUE;
       }
-      else{setcookie('name_value', $sport, time() + 30 * 24 * 60 * 60);}
+      else{setcookie('name_value', $name, time() + 30 * 24 * 60 * 60);}
     if (empty($_POST['stad']) ) {
       setcookie('stad_error', '1', time() + 24 * 60 * 60);
       $errors = TRUE;
     }
-    else{setcookie('stad_value', $sport, time() + 30 * 24 * 60 * 60);}
+    else{setcookie('stad_value', $stad, time() + 30 * 24 * 60 * 60);}
 
 
     if ($errors) {
