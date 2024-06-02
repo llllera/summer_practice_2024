@@ -96,12 +96,12 @@ else {
 
   $name = $_POST['name'];
   $phone = $_POST['phone'];
-  $lang ;
+  $spost ;
   if(!empty($_POST['sport']))
   {
     for($i = 0; $i < count($_POST['sport']); $i++)
     {
-      $lang = $_POST['sport'][$i];
+      $sport = $_POST['sport'][$i];
     }
   }
 
