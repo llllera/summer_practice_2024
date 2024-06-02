@@ -132,7 +132,7 @@ else {
       setcookie('sport_error', '1', time() + 24 * 60 * 60);
       $errors = TRUE;
     }
-    else{setcookie('sport_value', $lang, time() + 30 * 24 * 60 * 60);}
+    else{setcookie('sport_value', $sport, time() + 30 * 24 * 60 * 60);}
 
 
     if ($errors) {
@@ -166,7 +166,7 @@ else {
     include('data.php');
 
     try {
-      $stmt = $db->prepare("INSERT INTO sportsmen (name, phone, email, sport) VALUES (?, ?, ?, ?)");
+      $stmt = $db->prepare("INSERT INTO sportsmen (name, phone, sport) VALUES (?, ?, ?)");
       $stmt->execute([$name, $phone, $sport]);/// посмотри со спортом 1 элемент ли
       
       print('Данные успешно сохранены!');
