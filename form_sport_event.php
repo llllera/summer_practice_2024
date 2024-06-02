@@ -15,11 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']); // если не пусто присваивается TRUE
   $errors['phone'] = !empty($_COOKIE['phone_error']);
-  $errors['sport'] = !empty($_COOKIE['language_error']);
+  $errors['sport'] = !empty($_COOKIE['sport_error']);
   
 
-
-  // Выдаем сообщения об ошибках.
   if ($errors['name']) {
     if($_COOKIE['name_error']=='1'){
       $messages[] = '<div class="error">Заполните имя!</div>';
@@ -27,11 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     else{
       $messages[] = '<div class="error">Поле должно содержать только буквы и пробелы!</div>';
     }
-    // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('name_error', '', 100000);
     setcookie('name_value', '', 100000);
 
-    // Выводим сообщение.
   }
   
   if ($errors['phone']) {
@@ -64,9 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (empty($errors) && !empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
       include('data.php');
-    // TODO: загрузить данные пользователя из БД
-    // и заполнить переменную $values,
-    // предварительно санитизовав.
 
       $formId = $_SESSION['id'];
 
@@ -99,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 else {
  
-  // Проверяем ошибки.
   $errors = FALSE;
 
   $name = $_POST['name'];
@@ -183,9 +175,6 @@ else {
       exit();
     }
   
-
-  // TODO: Сохранение данных формы, логина и хеш md5() пароля в базу данных.
-  // ...
   }
 
     setcookie('save', '1');
