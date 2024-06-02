@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   
 
   
-  if ($errors['stadt']) {
+  if ($errors['stad']) {
     setcookie('stad_error', '', 100000);
     setcookie('stad_value', '', 100000);
     $messages[] = '<div class="error">Выберите стадион!</div>';
