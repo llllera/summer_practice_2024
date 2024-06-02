@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Спортивные заведения</title>
     <style>
-        .content{
-            max-height:0;
+        table{
+            display: none;
         }
         </style>
 </head>
 <body>
-<button class="collapsible">Список спортменов</button>
+<button onclick="showBlock(1)">Список спортменов</button>
 
-    <table class="content" id="films">
+    <table  id="block1" class="content" id="films">
         <thead>
             <tr>
                 <th>Название</th>
@@ -27,7 +27,7 @@
 
 
 <script>
-        let coll = document.getElemByClassName('collapsible');
+        /**let coll = document.getElemByClassName('collapsible');
         for(let i=0; i < coll.lenght; i++){
             coll[i].addEventListener('click', function(){
                 this.classList.toggle('active');
@@ -39,5 +39,14 @@
                 }
             })
         }
+        **/
+        function showBlock(blockNumber) {
+      var block = document.getElementById("block" + blockNumber);
+      if (block.style.display === "none") {
+        block.style.display = "block";
+      } else {
+        block.style.display = "none";
+      }
+    }
 </script>
 </body>
