@@ -163,6 +163,15 @@ else {
     try {
       $stmt = $db->prepare("INSERT INTO performances (date, place) VALUES (?, ?)");
       $stmt->execute([$_POST['day'] . '.' . $_POST['month'] . '.' . $_POST['year'], $stad]);
+
+      $id = $db->lastInsertId();
+
+      $stmt = $db->prepare("insert into performances_members (id_performance, id_member) values (:id_performance, :id_member)");
+      foreach ($_POST['name'] as $id_lang) {
+        $stmt->bindParam(':id_performance', $id_user);
+        $stmt->bindParam(':id_member', $id_lang);
+        $id_user = $id;
+        $stmt->execute();
       
       print('Данные успешно сохранены!');
     } catch (PDOException $e) {
