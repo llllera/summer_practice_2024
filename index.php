@@ -12,8 +12,8 @@
 </head>
 <body>
 <button class="collapsible">Список спортменов</button>
-<div class="content">
-    <table class="film-table" id="films">
+
+    <table class="content" id="films">
         <thead>
             <tr>
                 <th>Название</th>
@@ -23,7 +23,7 @@
         </thead>
         
     </table>
-</div>
+
 
 
 <script>
