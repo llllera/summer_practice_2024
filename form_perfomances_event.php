@@ -123,7 +123,7 @@ else {
 
     if ($errors) {
       // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
-      header('Location: form_performances_event.php');
+      header('Location: form_perfomances_event.php');
       exit();
     }
     else {
@@ -173,5 +173,5 @@ else {
   }
 
     setcookie('save', '1');
-    header('Location: form_performances_event.php');
+    header('Location: form_perfomances_event.php');
 }
