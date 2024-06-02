@@ -59,12 +59,12 @@
             <form action="form_sport_event.php" method="POST">
                 <div class="form-group">
                     <label for="client_name">ФИО:</label>
-                    <input type="text" id="client_name" name="client_name" value="<?php print $value['name']; ?>" required>
+                    <input type="text" id="client_name" name="client_name" value="<?php print $values['name']; ?>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="client_phone">Телефон:</label>
-                    <input type="tel" id="client_phone" name="client_phone" value="<?php print $value['phone']; ?>" required>
+                    <input type="tel" id="client_phone" name="client_phone" value="<?php print $values['phone']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="client_email">Вид спорта:</label>
