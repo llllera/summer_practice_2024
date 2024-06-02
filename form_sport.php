@@ -59,17 +59,17 @@
             <form action="form_sport_event.php" method="POST">
                 <div class="form-group">
                     <label for="client_name">ФИО:</label>
-                    <input type="text" id="client_name" name="client_name" value="<?php print $values['name']; ?>" required>
+                    <input type="text" id="client_name" name="name" value="<?php print $values['name']; ?>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="client_phone">Телефон:</label>
-                    <input type="tel" id="client_phone" name="client_phone" value="<?php print $values['phone']; ?>" required>
+                    <input type="tel" id="client_phone" name="phone" value="<?php print $values['phone']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="client_email">Вид спорта:</label>
                     
-                    <select>
+                    <select name="sport[]">
                     <?php
                     $types=selectAll('types_of_sports');
                     foreach($types as $t){
@@ -81,7 +81,7 @@
                     ?>
                     </select>
                 </div>
-                <input type="submit" value="добавить" name="UpdateClient">
+                <input type="submit" value="добавить" >
             </form>
         </div>
     </div>
