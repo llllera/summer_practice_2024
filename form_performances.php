@@ -56,7 +56,7 @@
 <body>
 <div class="container">
         <div class="block">
-            <form action="form_performances_event.php" method="POST">
+            <form action="form_perfomances_event.php" method="POST">
             <?php
                 if (!empty($messages)) {
                 print('<div class="form-group" >');
