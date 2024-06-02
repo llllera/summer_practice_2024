@@ -57,6 +57,16 @@
 <div class="container">
         <div class="block">
             <form action="form_sport_event.php" method="POST">
+            <?php
+                if (!empty($messages)) {
+                print('<div class="form-group" >');
+                // Выводим все сообщения.
+                foreach ($messages as $message) {
+                    print($message);
+                }
+                print('</div>');
+                }
+                ?>
                 <div class="form-group">
                     <label for="client_name">ФИО:</label>
                     <input type="text" id="client_name" name="name" value="<?php print $values['name']; ?>" required>
@@ -81,7 +91,13 @@
                     ?>
                     </select>
                 </div>
-                <input type="submit" value="добавить" >
+                <div class="form-group">
+                    <input type="submit" value="добавить" >
+                </div>
+                
+                <div class="form-group">
+                    <a href = "">Вернуться</a>
+                </div>
             </form>
         </div>
     </div>
