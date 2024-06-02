@@ -92,7 +92,7 @@
                             }
                         ?>
                     </select><br>
-                    <?php if ($errors['year']) {print($messages['year']); print('<br>');}?>
+                  
                     <select class="information" name="month" <?php if ($errors['month']) {print 'class="error"';} ?>>
                         <?php
                             for ($i = 1; $i <= 12; $i++) {
@@ -100,7 +100,7 @@
                             }
                         ?>
                     </select><br>
-                    <?php if ($errors['month']) {print($messages['month']); print('<br>');}?>
+                
                     <select class="information" name="day" <?php if ($errors['day']) {print 'class="error"';} ?>>
                         <?php
                             for ($i = 1; $i <= 31; $i++) {
@@ -108,7 +108,7 @@
                             }
                         ?>
                     </select><br>
-                    <?php if ($errors['day']) {print($messages['day']); print('<br>');}?>
+
                             </div>
 
 
