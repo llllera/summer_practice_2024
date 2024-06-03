@@ -68,8 +68,8 @@
                 }
                 ?>
                 <div class="form-group">
-                    <label for="client_name">ФИО учатиника:</label>
-                    <select name="name[]">
+                    <label for="client_name">ФИО участника(ов):</label>
+                    <select name="name[]" multiple="multiple">
                     <?php
                     $types=selectAll('sportsmen');
                     foreach($types as $t){
