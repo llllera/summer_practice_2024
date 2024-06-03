@@ -49,7 +49,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <a href = "./index.php">Вернуться</a>
+                    <a href = "../index.php">Вернуться</a>
                 </div>
             </form>
         </div>
