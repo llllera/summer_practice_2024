@@ -13,8 +13,7 @@
 <body>
     <?php 
     if(session_start()){
-        session_destroy();
-        setcookie('PHPSESSID', '', 100000, '/');}
+        session_destroy();}
     ?>
     <button onclick="showBlock(1)">Список спортменов</button>
 
