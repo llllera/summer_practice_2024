@@ -25,8 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        <?php include('data.php');
-        $people=selectAll('sportsmen');
+        <?php $people=selectAll('sportsmen');
         foreach ($people as $pp) : ?>
         <tr class="item_row">
             <td><?php echo $pp['name']; ?></td>
@@ -113,7 +112,7 @@
         </thead>
         <tbody>
         <?php 
-            
+            include('data.php');
             $sth = $db->prepare("SELECT performances.id, performances.date, performances.place, GROUP_CONCAT(sportsmen.name SEPARATOR ', ') AS names
                                 FROM performances
                                 JOIN performances_members ON performances.id = performances_members.id_performance join sportsmen on performances_members.id_member = sportsmen.id
@@ -165,10 +164,11 @@
 </script>
 <?php
 function selectAll($tables){
-
+  include('data.php');
   $sth = $db->prepare("SELECT * FROM $tables");
     $sth->execute();
     return $users = $sth->fetchAll();
 }
+
 ?>
 </body>
