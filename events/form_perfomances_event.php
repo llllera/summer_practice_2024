@@ -9,6 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
+      setcookie('year_value', '', 100000);
+      setcookie('month_value', '', 100000);
+      setcookie('day_value', '', 100000);
        // Если в куках есть пароль, то выводим сообщение.
     }
      // Складываем признак ошибок в массив.
@@ -130,9 +133,6 @@ else {
       // Удаляем Cookies с признаками ошибок.
       setcookie('name_error', '', 100000);
       setcookie('stad_error', '', 100000);
-      setcookie('year_value', '', 100000);
-      setcookie('month_value', '', 100000);
-      setcookie('day_value', '', 100000);
     }
 
 
