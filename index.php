@@ -33,7 +33,7 @@
             <td><?php echo $pp['sport']; ?></td>
             <td>
                 <form action="sport_event.php" method="post">
-                    <button class="btn edit-btn" name="change" type="submit">Редактировать</button>
+                    <input type="submit" name="change" class="tableButtonCh" value="Редактировать"/>
                     <button class="btn delete-btn" name="delete" type="submit">Удалить</button>
                     <input name="id" value="<?php echo $pp['id']; ?>" type="hidden" />
                 </form>
