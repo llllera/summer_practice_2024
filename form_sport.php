@@ -7,7 +7,8 @@
     <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background: rgb(251,251,251);
+    background: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(50,63,157,1) 100%);
       
     }
     .container {
@@ -46,7 +47,7 @@
       padding: 10px;
       border-radius: 5px;
       border: none;
-      background-color: #4CAF50;
+      background-color: #5F9EA0ж
       color: #fff;
       font-weight: bold;
       cursor: pointer;
