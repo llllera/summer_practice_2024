@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
   $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
 
-  if (empty($errors) && !empty($_COOKIE[session_name()]) &&
+  if (
       session_start() && !empty($_SESSION['id'])) {
       include('data.php');
     print 'in if session';
