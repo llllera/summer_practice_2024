@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
-       // Если в куках есть пароль, то выводим сообщение.
+      setcookie('name_value', '', 100000);
+      setcookie('phone_value', '', 100000);
+      setcookie('sport_value', '', 100000);
     }
      // Складываем признак ошибок в массив.
   $errors = array();
