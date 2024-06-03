@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include('data.php');
+    include('../data.php');
     if (isset($_POST['change'] )) {
         session_start();
         $_SESSION['id'] = $_POST['id'];
