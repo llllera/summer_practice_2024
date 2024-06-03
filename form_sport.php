@@ -35,7 +35,7 @@
     .form-group input[type="text"],
     .form-group input[type="tel"], 
     select {
-      width: 100%;
+      width: -webkit-fill-available;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
