@@ -68,9 +68,6 @@
                     
                 </tr>
                 <?php endforeach; ?>
-                <tr class="add">
-                        <td colspan="5"><button class="but" name="change" id="add" type="submit">Добавить</button></td>
-                    </tr>
                 </tbody>
                 
                 
@@ -93,9 +90,6 @@
                     
                 </tr>
                 <?php endforeach; ?>
-                <tr class="add">
-                            <td colspan="5"><button class="but" name="change" id="add" type="submit">Добавить</button></td>
-                        </tr>
                 </tbody>
             
             </table>

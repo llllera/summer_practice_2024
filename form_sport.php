@@ -47,7 +47,7 @@
       padding: 10px;
       border-radius: 5px;
       border: none;
-      background-color: #5F9EA0;
+      background-color: #4CAF50;
       color: #fff;
       font-weight: bold;
       cursor: pointer;
