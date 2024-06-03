@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['change'] )) {
         session_start();
         $_SESSION['id'] = $_POST['id'];
+        print('in change  ');
         header('Location:form_sport_event.php');
     }
     else if (isset($_POST['delete'] )) {
