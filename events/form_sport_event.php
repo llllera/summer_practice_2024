@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
-      include('./data.php');
+      include('../data.php');
       $formId = $_SESSION['id'];
       try {
        

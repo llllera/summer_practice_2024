@@ -44,7 +44,7 @@
                     ?>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group"> 
                     <input type="submit" value="добавить" >
                 </div>
                 
