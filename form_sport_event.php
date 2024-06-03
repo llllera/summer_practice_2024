@@ -157,7 +157,7 @@ else {
   // кроме логина и пароля.
   $formId = $_SESSION['id'];
  
-  $stmt = $db->prepare("UPDATE users SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
+  $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
   $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
   
   }
