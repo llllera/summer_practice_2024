@@ -11,10 +11,19 @@
         body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
 }
-
+.container {
+      width: 500px;
+      margin: auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 button {
   background-color: #4CAF50;
   color: white;
@@ -81,6 +90,7 @@ tr.item_row:hover {
     if(session_start()){
         session_destroy();}
     ?>
+    <div class="container">
     <button onclick="showBlock(1)">Список спортменов</button>
 
     <table  id="block1" class="content" id="films">
@@ -207,7 +217,7 @@ tr.item_row:hover {
         
     </table>
 
-
+        </div>
 
 <script>
         /**let coll = document.getElemByClassName('collapsible');
