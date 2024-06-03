@@ -11,6 +11,9 @@
         </style>
 </head>
 <body>
+    <?php session_destroy();
+        setcookie('PHPSESSID', '', 100000, '/');
+    ?>
     <button onclick="showBlock(1)">Список спортменов</button>
 
     <table  id="block1" class="content" id="films">
