@@ -31,5 +31,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     setcookie('save', '1');
-    header('Location: admin.php');
+    header('Location: index.php');
 }
