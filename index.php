@@ -13,7 +13,7 @@
     ?>
     <div class="container">
         <div class = "content">
-            <button onclick="showBlock(1)">Список спортменов</button>
+            <button onclick="showBlock(1)">Список спортсменов</button>
 
             <table  id="block1" class="table">
                 <thead>
@@ -30,7 +30,7 @@
                         <td><?php echo $pp['name']; ?></td>
                         <td><?php echo $pp['phone']; ?></td>
                         <td><?php echo $pp['sport']; ?></td>
-                        <form action="sport_event.php" method="post">
+                        <form action="events/sport_event.php" method="post">
                             <td class="edit">
                                 <button class="but" type="submit" name="change">Редактировать</button>
                             </td>
