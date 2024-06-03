@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   if (empty($errors) && !empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
-      include('data.php');
+      include('./data.php');
 
       $formId = $_SESSION['id'];
 
@@ -134,7 +134,7 @@ else {
     }
 
 
-    include('data.php');
+    include('./data.php');
     // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
   if (!empty($_COOKIE[session_name()]) &&
   session_start() && !empty($_SESSION['id'])) {
@@ -158,7 +158,7 @@ else {
   }
 
   else {
-    include('data.php');
+    include('./data.php');
 
     try {
       $stmt = $db->prepare("INSERT INTO performances (date, place) VALUES (?, ?)");

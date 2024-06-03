@@ -56,7 +56,7 @@
     </div>
     <?php
 function selectAll($tables){
-  include('data.php');
+  include('./data.php');
   $sth = $db->prepare("SELECT * FROM $tables");
     $sth->execute();
     return $users = $sth->fetchAll();
