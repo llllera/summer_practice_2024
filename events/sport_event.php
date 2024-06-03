@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
         setcookie('save', '1');
-        header('Location: ./index.php');
+        header('Location: ../index.php');
     }
     
     

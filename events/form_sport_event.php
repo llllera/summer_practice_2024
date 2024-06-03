@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       setcookie('sport_value', $values['sport'], time() + 30 * 24 * 60 * 60);
   }
  
-  include('./pages/form_sport.php');
+  include('../pages/form_sport.php');
 }
 
 else {
@@ -137,7 +137,7 @@ else {
 
     }
 
-    include('./data.php');
+    include('../data.php');
     if (!empty($_COOKIE[session_name()]) &&
     session_start() && !empty($_SESSION['id'])) {
 
@@ -148,7 +148,7 @@ else {
   }
 
   else {
-    include('./data.php');
+    include('../data.php');
 
     try {
       $stmt = $db->prepare("INSERT INTO sportsmen (name, phone, sport) VALUES (?, ?, ?)");

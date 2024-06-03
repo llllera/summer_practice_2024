@@ -9,7 +9,7 @@
 <body>
 <div class="container">
         <div class="block">
-            <form action="./events/form_sport_event.php" method="POST">
+            <form action="../events/form_sport_event.php" method="POST">
             <?php
                 if (!empty($messages)) {
                 print('<div class="form-group" >');
@@ -56,7 +56,7 @@
     </div>
     <?php
 function selectAll($tables){
-  include('./data.php');
+  include('../data.php');
   $sth = $db->prepare("SELECT * FROM $tables");
     $sth->execute();
     return $users = $sth->fetchAll();
