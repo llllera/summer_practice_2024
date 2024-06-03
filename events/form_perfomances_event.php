@@ -130,7 +130,9 @@ else {
       // Удаляем Cookies с признаками ошибок.
       setcookie('name_error', '', 100000);
       setcookie('stad_error', '', 100000);
-      // TODO: тут необходимо удалить остальные Cookies.
+      setcookie('year_value', '', 100000);
+      setcookie('month_value', '', 100000);
+      setcookie('day_value', '', 100000);
     }
 
 
