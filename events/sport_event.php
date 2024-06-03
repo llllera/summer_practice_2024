@@ -1,15 +1,11 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    print('in changeiii  ');
-    print 'in change iii ';
     include('data.php');
     if (isset($_POST['change'] )) {
         session_start();
         $_SESSION['id'] = $_POST['id'];
-        print('in change  ');
-        print 'in change  ';
-        header('Location:form_sport_event.php');
+        header('Location: ./events/form_sport_event.php');
     }
     else if (isset($_POST['delete'] )) {
         try {
@@ -32,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
         setcookie('save', '1');
-        header('Location: index.php');
+        header('Location: ./index.php');
     }
     
     

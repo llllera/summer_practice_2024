@@ -3,55 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style_form.css">
     <title>Мероприятие</title>
-    <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      
-    }
-    .container {
-      width: 500px;
-      margin: auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .form-group {
-      margin: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="tel"], 
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .form-group input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: #4CAF50;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body>
 <div class="container">
@@ -132,7 +85,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <a href = "">Вернуться</a>
+                    <a href = "./index.php">Вернуться</a>
                 </div>
             </form>
         </div>

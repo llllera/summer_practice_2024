@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   }
  
-  include('form_performances.php');
+  include('./pages/form_performances.php');
 
 }
 else {

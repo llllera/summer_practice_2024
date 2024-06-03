@@ -27,11 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     setcookie('name_error', '', 100000);
     setcookie('name_value', '', 100000);
-
   }
   
   if ($errors['phone']) {
-    
     if($_COOKIE['phone_error']=='1'){
 
       $messages[] = '<div class="error">Заполните номер телефона!</div>';
@@ -39,10 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     else{
       $messages[] = '<div class="error">Поле должно содержать только знак + и цифры!</div>';
     }
-   
     setcookie('phone_error', '', 100000);
     setcookie('phone_value', '', 100000);
-    
   }
   
   if ($errors['sport']) {
@@ -60,10 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
       include('data.php');
-    print 'in if session';
       $formId = $_SESSION['id'];
-
-
       try {
        
         $sth = $db->prepare('SELECT name, phone, sport FROM sportsmen WHERE id = :id');
@@ -73,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $values['phone'] = $row['phone'];
             $values['sport'] = $row['sport'];
           }
-      
       }
       catch(PDOException $e){
         print('Error : ' . $e->getMessage());
@@ -83,15 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       setcookie('name_value', $values['name'], time() + 30 * 24 * 60 * 60);
       setcookie('phone_value', $values['phone'], time() + 30 * 24 * 60 * 60);
       setcookie('sport_value', $values['sport'], time() + 30 * 24 * 60 * 60);
-      
-
   }
  
-  include('form_sport.php');
-
+  include('./pages/form_sport.php');
 }
+
 else {
- 
   $errors = FALSE;
 
   $name = $_POST['name'];
@@ -145,21 +134,17 @@ else {
       setcookie('name_error', '', 100000);
       setcookie('phone_error', '', 100000);
       setcookie('sport_error', '', 100000);
-      // TODO: тут необходимо удалить остальные Cookies.
+
     }
 
-
     include('data.php');
-    // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
-  if (!empty($_COOKIE[session_name()]) &&
-  session_start() && !empty($_SESSION['id'])) {
-  // TODO: перезаписать данные в БД новыми данными,
-  // кроме логина и пароля.
-  $formId = $_SESSION['id'];
- 
-  $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
-  $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
-  
+    if (!empty($_COOKIE[session_name()]) &&
+    session_start() && !empty($_SESSION['id'])) {
+
+    $formId = $_SESSION['id'];
+    
+    $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
+    $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
   }
 
   else {
@@ -167,7 +152,7 @@ else {
 
     try {
       $stmt = $db->prepare("INSERT INTO sportsmen (name, phone, sport) VALUES (?, ?, ?)");
-      $stmt->execute([$name, $phone, $sport]);/// посмотри со спортом 1 элемент ли
+      $stmt->execute([$name, $phone, $sport]);
       
       print('Данные успешно сохранены!');
     } catch (PDOException $e) {
@@ -176,7 +161,6 @@ else {
     }
   
   }
-
     setcookie('save', '1');
     header('Location: form_sport_event.php');
 }
