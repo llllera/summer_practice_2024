@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   }
   echo 'not in sessio';
-  //include('../pages/form_performances.php');
+  include('../pages/form_performances.php');
 
 }
 else {
