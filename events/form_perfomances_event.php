@@ -74,15 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           }
           echo  $values['day'];
           echo 'in sessio';
-          $sth = $db->prepare('SELECT id_member FROM performances_members WHERE id_performance = :id');
+          $sth = $db->prepare('SELECT * FROM performances_members WHERE id_performance = :id');
           $sth->execute(['id' => $formId]);
           $row = $sth->fetchAll();
           $langsCV = '';
-
-          $string = implode(', ', $row);
-          echo $string;
           for($i = 0; $i < count($row); $i++){
-            $langsCV .= $row[$i] . ",";
+            $langsCV .= $row[$i]['id_member'] . ",";
           }
           $values['name'] = $langsCV;
       
