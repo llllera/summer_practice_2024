@@ -9,12 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
-      setcookie('name_value', '', time() - 3600);
-      setcookie('phone_value', '', time() - 3600);
-      setcookie('sport_value', '', time() - 3600);
+      
       if(session_start()){
         session_destroy();}
     }
+    setcookie('name_value', '', time() - 3600);
+      setcookie('phone_value', '', time() - 3600);
+      setcookie('sport_value', '', time() - 3600);
      // Складываем признак ошибок в массив.
      echo 'save' .$_COOKIE['save']; 
      echo 'save' .$_COOKIE['name_value'];
