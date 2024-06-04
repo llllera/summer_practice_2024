@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $db->prepare("SELECT name FROM stadions where id = ?");
         $stmt->execute([$id]);
         $name = $stmt->fetch();
-        echo $name;
+        $string = json_encode($name);
+        echo $string;
         $stmt = $db->prepare("UPDATE performances SET place = :place where place = :id");
         $stmt -> execute(['place'=>$_POST['name'],'id' => $name]);
         $stmt = $db->prepare("UPDATE stadions SET name = :name where id = :id");
