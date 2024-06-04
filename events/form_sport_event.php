@@ -56,12 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
-  if(!empty($_COOKIE['error'])){
   $values = array();
-  $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
-  $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
-  $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
-}
+  $values['name'] = '';
+  $values['phone'] = '' ;
+  $values['sport'] = '';
+  if(!empty($_COOKIE['error'])){
+    $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
+    $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
+    $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
+  }
 else {setcookie('error', '', 100000);}
 
   if (!empty($_COOKIE[session_name()]) &&
