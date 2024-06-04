@@ -72,8 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $values['year'] = $mas[2];
             $values['stad'] = $row['place'];
           }
-          echo  $values['day'];
-          echo 'in sessio';
           $sth = $db->prepare('SELECT * FROM performances_members WHERE id_performance = :id');
           $sth->execute(['id' => $formId]);
           $row = $sth->fetchAll();
@@ -97,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       
 
   }
-  echo 'not in sessio';
   include('../pages/form_performances.php');
 
 }
