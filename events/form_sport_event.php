@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       setcookie('save', '', 100000);
       echo '1 ' .$_COOKIE['name_value'];
       $messages[] = 'Спасибо, результаты сохранены.';
-      setcookie('name_value', '', 100000);
+      setcookie('name_value', '', time() - 3600);
       print('immimim\n');
-      setcookie('phone_value', '', 100000);
-      setcookie('sport_value', '', 100000);
+      setcookie('phone_value', '', time() - 3600);
+      setcookie('sport_value', '', time() - 3600);
       echo '2 ' .$_COOKIE['name_value'];
       if(session_start()){
         session_destroy();}
