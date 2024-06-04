@@ -4,16 +4,19 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    $messages = array();
+  $messages = array();
 
-    if (!empty($_COOKIE['save'])) {
-      setcookie('save', '', 100000);
-      $messages[] = 'Спасибо, результаты сохранены.';
-      setcookie('name_value', '',  time() - 3600);
-      setcookie('year_value', '',  time() - 3600);
-      setcookie('month_value', '',  time() - 3600);
-      setcookie('day_value', '',  time() - 3600);
-    }
+  if (!empty($_COOKIE['save'])) {
+    setcookie('save', '', 100000);
+    $messages[] = 'Спасибо, результаты сохранены.';
+    setcookie('name_value', '',  time() - 3600);
+    setcookie('year_value', '',  time() - 3600);
+    setcookie('month_value', '',  time() - 3600);
+    setcookie('day_value', '',  time() - 3600);
+
+    if(session_start()){
+      session_destroy();}
+  }
      // Складываем признак ошибок в массив.
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']); // если не пусто присваивается TRUE
@@ -35,8 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
-  if(!empty($_COOKIE['error'])){
   $values = array();
+    $values['name'] = '';
+    $values['yaer'] = '';
+    $values['month'] = '';
+    $values['day'] = '';
+    $values['stad'] = '';
+  if(!empty($_COOKIE['error'])){
     $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
     $values['yaer'] = empty($_COOKIE['yaer_value']) ? '' : $_COOKIE['year_value'];
     $values['month'] = empty($_COOKIE['month_value']) ? '' : $_COOKIE['month_value'];
@@ -113,32 +121,32 @@ else {
     }
   }
 
-    if (empty($_POST['name']) ) {
-        setcookie('name_error', '1', time() + 24 * 60 * 60);
-        $errors = TRUE;
-      }
-      else{setcookie('name_value', $name, time() + 30 * 24 * 60 * 60);}
-    if (empty($_POST['stad']) ) {
-      setcookie('stad_error', '1', time() + 24 * 60 * 60);
+  if (empty($_POST['name']) ) {
+      setcookie('name_error', '1', time() + 24 * 60 * 60);
       $errors = TRUE;
     }
-    else{setcookie('stad_value', $stad, time() + 30 * 24 * 60 * 60);}
+  else{setcookie('name_value', $name, time() + 30 * 24 * 60 * 60);}
+  if (empty($_POST['stad']) ) {
+    setcookie('stad_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  else{setcookie('stad_value', $stad, time() + 30 * 24 * 60 * 60);}
 
 
-    if ($errors) {
-      // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
-      setcookie('error', '1');
-      header('Location: form_perfomances_event.php');
-      exit();
-    }
-    else {
-      // Удаляем Cookies с признаками ошибок.
-      setcookie('name_error', '', 100000);
-      setcookie('stad_error', '', 100000);
-    }
+  if ($errors) {
+    // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
+    setcookie('error', '1');
+    header('Location: form_perfomances_event.php');
+    exit();
+  }
+  else {
+    // Удаляем Cookies с признаками ошибок.
+    setcookie('name_error', '', 100000);
+    setcookie('stad_error', '', 100000);
+  }
 
 
-    include('../data.php');
+  include('../data.php');
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {

@@ -4,22 +4,20 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    $messages = array();
+  $messages = array();
 
-    if (!empty($_COOKIE['save'])) {
-      setcookie('save', '', 100000);
-      $messages[] = 'Спасибо, результаты сохранены.';
-      setcookie('name_value', '', time() - 3600);
-      setcookie('phone_value', '', time() - 3600);
-      setcookie('sport_value', '', time() - 3600);
-      
-      if(session_start()){
-        session_destroy();}
-    }
-   
-     // Складываем признак ошибок в массив.
-     echo 'save' .$_COOKIE['save']; 
-     echo 'save' .$_COOKIE['name_value'];
+  if (!empty($_COOKIE['save'])) {
+    setcookie('save', '', 100000);
+    $messages[] = 'Спасибо, результаты сохранены.';
+    setcookie('name_value', '', time() - 3600);
+    setcookie('phone_value', '', time() - 3600);
+    setcookie('sport_value', '', time() - 3600);
+    
+    if(session_start()){
+      session_destroy();}
+  }
+  
+    // Складываем признак ошибок в массив.
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']); // если не пусто присваивается TRUE
   $errors['phone'] = !empty($_COOKIE['phone_error']);
@@ -65,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
     $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
   }
-else {setcookie('error', '', 100000);}
+  else {setcookie('error', '', 100000);}
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
@@ -108,58 +106,60 @@ else {
     }
   }
 
-    if (empty($name)) {
-      // Выдаем куку на день с флажком об ошибке в поле fio.
-      setcookie('name_error', '1', time() + 24 * 60 * 60);
-      $errors = TRUE;
-    }
-    else if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ\s\-]+$/u', $name)){
-      setcookie('name_error', '2', time() + 24 * 60 * 60);
-      $errors = TRUE;
-    }
-    // Сохраняем ранее введенное в форму значение на месяц.
-    else{setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);}
+  if (empty($name)) {
+    // Выдаем куку на день с флажком об ошибке в поле fio.
+    setcookie('name_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  else if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ\s\-]+$/u', $name)){
+    setcookie('name_error', '2', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  // Сохраняем ранее введенное в форму значение на месяц.
+  else{
+    setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);
+  }
 
-    if (empty($phone) ) {
-      setcookie('phone_error', '1', time() + 24 * 60 * 60);
-      $errors = TRUE;
-    }
-    else if(!preg_match('/^(\+\d+|\d+)$/', $phone)){
-      setcookie('phone_error', '2', time() + 24 * 60 * 60);
-      $errors = TRUE;
-    }
-    else{setcookie('phone_value', $_POST['phone'], time() + 30 * 24 * 60 * 60);}
+  if (empty($phone) ) {
+    setcookie('phone_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  else if(!preg_match('/^(\+\d+|\d+)$/', $phone)){
+    setcookie('phone_error', '2', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  else{setcookie('phone_value', $_POST['phone'], time() + 30 * 24 * 60 * 60);}
 
-   
-    if (empty($_POST['sport']) ) {
-      setcookie('sport_error', '1', time() + 24 * 60 * 60);
-      $errors = TRUE;
-    }
-    else{setcookie('sport_value', $sport, time() + 30 * 24 * 60 * 60);}
+  
+  if (empty($_POST['sport']) ) {
+    setcookie('sport_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  else{setcookie('sport_value', $sport, time() + 30 * 24 * 60 * 60);}
 
 
-    if ($errors) {
-      setcookie('error', '1');
-      // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
-      header('Location: form_sport_event.php');
-      exit();
-    }
-    else {
-      // Удаляем Cookies с признаками ошибок.
-      setcookie('name_error', '', 100000);
-      setcookie('phone_error', '', 100000);
-      setcookie('sport_error', '', 100000);
+  if ($errors) {
+    setcookie('error', '1');
+    // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
+    header('Location: form_sport_event.php');
+    exit();
+  }
+  else {
+    // Удаляем Cookies с признаками ошибок.
+    setcookie('name_error', '', 100000);
+    setcookie('phone_error', '', 100000);
+    setcookie('sport_error', '', 100000);
 
-    }
+  }
 
-    include('../data.php');
-    if (!empty($_COOKIE[session_name()]) &&
-      session_start() && !empty($_SESSION['id'])) {
+  include('../data.php');
+  if (!empty($_COOKIE[session_name()]) &&
+    session_start() && !empty($_SESSION['id'])) {
 
-      $formId = $_SESSION['id'];
-      
-      $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
-      $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
+    $formId = $_SESSION['id'];
+    
+    $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
+    $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
   }
 
   else {
