@@ -26,7 +26,7 @@
                     <?php
                     $types=selectAll('sportsmen');
                     foreach($types as $t){
-                        if(strpos($values['name'],$t['name'] )!== false){                                    ///скорее всего не будет работать
+                        if(strpos($values['name'],$t['name'] )!== false){               echo   $t['name'];                    ///скорее всего не будет работать
                             echo '<option value="'.$t['id'].'" selected>' . $t['name'] . '</option>';
                         }
                        else { echo '<option value="'.$t['id'].'" >' . $t['name'] . '</option>';}
