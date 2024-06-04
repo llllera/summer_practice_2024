@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $stmt = $db->prepare("SELECT name FROM stadions where id = ?");
         $stmt->execute([$id]);
-        $name = $sth->fetch();
+        $name = $stmt->fetch();
         $stmt = $db->prepare("UPDATE performances SET place = :place where place = :id");
         $stmt -> execute(['place'=>$_POST['name'],'id' => $name]);
         $stmt = $db->prepare("UPDATE stadions SET name = :name where id = :id");
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $stmt = $db->prepare("SELECT name FROM stadions where id = ?");
             $stmt->execute([$id]);
-            $name = $sth->fetch();
+            $name = $stmt->fetch();
             $stmt = $db->prepare("SELECT id FROM performances where place = ?");
             $stmt->execute([$name]);
             $row = $stmt->fetchAll();
