@@ -9,13 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
+      setcookie('name_value', '', time() - 3600);
+      setcookie('phone_value', '', time() - 3600);
+      setcookie('sport_value', '', time() - 3600);
       
       if(session_start()){
         session_destroy();}
     }
-    setcookie('name_value', '', time() - 3600);
-      setcookie('phone_value', '', time() - 3600);
-      setcookie('sport_value', '', time() - 3600);
+   
      // Складываем признак ошибок в массив.
      echo 'save' .$_COOKIE['save']; 
      echo 'save' .$_COOKIE['name_value'];
@@ -55,10 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
+  if(!empty($_COOKIE('error'))){
   $values = array();
   $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
   $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
   $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
+}
+else {setcookie('error', '', 100000);}
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
@@ -132,6 +136,7 @@ else {
 
 
     if ($errors) {
+      setcookie('error', '1');
       // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
       header('Location: form_sport_event.php');
       exit();
