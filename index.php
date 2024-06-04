@@ -42,7 +42,7 @@
                     </tr>
                     <?php endforeach; ?>
                     <tr class="add">
-                        <td colspan="5"><button class="but" name="change" id="add" type="submit">Добавить</button></td>
+                        <td colspan="5"><button class="but" onclick="document.location='pages/form_sport_event.php'" name="change" id="add" type="submit">Добавить</button></td>
                     </tr>
                 </tbody>
        
@@ -129,7 +129,7 @@
             </tr>
             <?php endforeach; ?>
             <tr class="add">
-                            <td colspan="5"><button class="but" name="change" id="add" type="submit">Редактировать</button></td>
+                            <td colspan="5"><button class="but" onclick="document.location='pages/form_performances_event.php'" name="change" id="add" type="submit">Добавить</button></td>
                         </tr>
         </tbody>
             
