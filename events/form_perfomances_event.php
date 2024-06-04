@@ -79,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           $row = $sth->fetchAll();
           $langsCV = '';
 
+          $string = implode(', ', $row);
+          echo $string;
           for($i = 0; $i < count($row); $i++){
             $langsCV .= $row[$i] . ",";
           }
