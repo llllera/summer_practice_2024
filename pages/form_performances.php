@@ -29,7 +29,7 @@
                         if(strpos($values['name'],$t['name'] )!== false){               echo   $t['name'];                    ///скорее всего не будет работать
                             echo '<option value="'.$t['id'].'" selected>' . $t['name'] . '</option>';
                         }
-                       else { echo '<option value="'.$t['id'].'" >' . $t['name'] . '</option>';}
+                       else { echo '<option value="'.$t['id'].'" >' . $t['name'] . '</option>'; echo   $t['name'];}
                     }
                     ?>
                     </select>
