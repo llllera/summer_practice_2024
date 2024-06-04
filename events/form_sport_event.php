@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
       setcookie('name_value', '', 100000);
+      print('immimim');
       setcookie('phone_value', '', 100000);
       setcookie('sport_value', '', 100000);
       if(session_start()){
