@@ -35,12 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
+  if(!empty($_COOKIE('error'))){
   $values = array();
-  $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
-  $values['yaer'] = empty($_COOKIE['yaer_value']) ? '' : $_COOKIE['year_value'];
-  $values['month'] = empty($_COOKIE['month_value']) ? '' : $_COOKIE['month_value'];
-  $values['day'] = empty($_COOKIE['day_value']) ? '' : $_COOKIE['day_value'];
-  $values['stad'] = empty($_COOKIE['stad_value']) ? '' : $_COOKIE['stad_value'];
+    $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
+    $values['yaer'] = empty($_COOKIE['yaer_value']) ? '' : $_COOKIE['year_value'];
+    $values['month'] = empty($_COOKIE['month_value']) ? '' : $_COOKIE['month_value'];
+    $values['day'] = empty($_COOKIE['day_value']) ? '' : $_COOKIE['day_value'];
+    $values['stad'] = empty($_COOKIE['stad_value']) ? '' : $_COOKIE['stad_value'];
+  }
+  else {setcookie('error', '', 100000);}
+
 
   if (empty($errors) && !empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
@@ -123,6 +127,7 @@ else {
 
     if ($errors) {
       // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
+      setcookie('error', '1');
       header('Location: form_perfomances_event.php');
       exit();
     }
