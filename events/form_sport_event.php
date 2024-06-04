@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         session_destroy();}
     }
      // Складываем признак ошибок в массив.
+     echo 'save' .$_COOKIE['save']; 
+     echo 'save' .$_COOKIE['name_value'];
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']); // если не пусто присваивается TRUE
   $errors['phone'] = !empty($_COOKIE['phone_error']);
