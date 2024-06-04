@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
+      setcookie('name_value', '',  time() - 3600);
       setcookie('year_value', '',  time() - 3600);
       setcookie('month_value', '',  time() - 3600);
       setcookie('day_value', '',  time() - 3600);
