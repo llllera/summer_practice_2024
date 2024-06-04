@@ -2,7 +2,10 @@ body {
     font-family: Verdana, Geneva, sans-serif;
     background: rgb(251,251,251);
     background: linear-gradient(90deg, rgba(251,251,251,1) 0%, rgba(50,63,157,1) 100%);
-    position: relative
+    height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
     width: 50%;
