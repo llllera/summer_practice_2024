@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
-  if(!empty($_COOKIE('error'))){
+  if(!empty($_COOKIE['error'])){
   $values = array();
     $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
     $values['yaer'] = empty($_COOKIE['yaer_value']) ? '' : $_COOKIE['year_value'];
