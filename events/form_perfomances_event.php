@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   else {setcookie('error', '', 100000);}
 
 
-  if (empty($errors) && !empty($_COOKIE[session_name()]) &&
+  if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
       include('../data.php');
 
