@@ -10,9 +10,9 @@
     <?php 
     if(session_start()){
         session_destroy();}
-        setcookie('name_value', '', time() - 3600);
-        setcookie('phone_value', '', time() - 3600);
-        setcookie('sport_value', '', time() - 3600);
+        setcookie('name_value', '', time() - 3600, '/');
+        setcookie('phone_value', '', time() - 3600, '/');
+        setcookie('sport_value', '', time() - 3600, '/');
     ?>
     <div class="container">
         <div class = "content">
