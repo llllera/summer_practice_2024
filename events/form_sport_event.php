@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
-      echo .$_COOKIE['name_value'];
+      echo $_COOKIE['name_value'];
       $messages[] = 'Спасибо, результаты сохранены.';
       setcookie('name_value', '', 100000);
       print('immimim\n');
       setcookie('phone_value', '', 100000);
       setcookie('sport_value', '', 100000);
-      echo .$_COOKIE['name_value'];
+      echo $_COOKIE['name_value'];
       if(session_start()){
         session_destroy();}
     }
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
   $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
   $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
-  echo .$_COOKIE['name_value'];
+  echo $_COOKIE['name_value'];
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
