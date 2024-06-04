@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           $langsCV = '';
 
           for($i = 0; $i < count($row); $i++){
-            $langsCV .= $rowl[$i] . ",";
+            $langsCV .= $row[$i] . ",";
           }
           $values['name'] = $langsCV;
       
