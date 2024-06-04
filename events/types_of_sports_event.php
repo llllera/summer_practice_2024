@@ -4,9 +4,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include('../data.php');
     if (isset($_POST['change'] )) {
         $id = $_POST['id'];
+    try {
         $stmt = $db->prepare("update users SET name = :name, phone = :phone, email = :email, date=:date,  gender = :gender, biography = :biography where id = :id");
         $stmt -> execute(['name'=>$_POST['name'],'phone'=>$_POST['phone'], 'email'=>$_POST['email'],'date'=>$_POST['date'],'gender'=>$_POST['gender'],'biography'=>$_POST['biography'], 'id' => $id]);
-    
+        }
     catch(PDOException $e){
         print('Error : ' . $e->getMessage());
         exit();

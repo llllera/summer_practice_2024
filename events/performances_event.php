@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['change'] )) {
         session_start();
         $_SESSION['id'] = $_POST['id'];
-        header('Location: form_performances_event.php');
+        header('Location: form_perfomances_event.php');
     }
     else if (isset($_POST['delete'] )) {
         try {
