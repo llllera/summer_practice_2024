@@ -9,10 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
       $messages[] = 'Спасибо, результаты сохранены.';
-      setcookie('year_value', '', 100000);
-      setcookie('month_value', '', 100000);
-      setcookie('day_value', '', 100000);
-       // Если в куках есть пароль, то выводим сообщение.
+      setcookie('year_value', '',  time() - 3600);
+      setcookie('month_value', '',  time() - 3600);
+      setcookie('day_value', '',  time() - 3600);
     }
      // Складываем признак ошибок в массив.
   $errors = array();
@@ -108,9 +107,6 @@ else {
       $stad = $_POST['stad'][$i];
     }
   }
-  setcookie('year_value', $_POST['year'], time() + 24 * 60 * 60);
-  setcookie('month_value', $_POST['month'], time() + 24 * 60 * 60);
-  setcookie('day_value', $_POST['day'], time() + 24 * 60 * 60);
 
     if (empty($_POST['name']) ) {
         setcookie('name_error', '1', time() + 24 * 60 * 60);
@@ -137,25 +133,24 @@ else {
 
 
     include('../data.php');
-    // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
+
   if (!empty($_COOKIE[session_name()]) &&
-  session_start() && !empty($_SESSION['id'])) {
-  // TODO: перезаписать данные в БД новыми данными,
-  // кроме логина и пароля.
-  $formId = $_SESSION['id'];
- 
-  $stmt = $db->prepare("UPDATE performances SET date = :name, place = :place WHERE id = :id");
-  $stmt -> execute(['name'=>$_POST['day'] . '.' . $_POST['month'] . '.' . $_POST['year'],'place'=>$stad, 'id' => $formId]);
-  
-  $stmt = $db->prepare("Delete from performances_members WHERE id_performance = :id");
-  $stmt -> execute([ 'id' => $formId]);
-  $stmt = $db->prepare("insert into performances_members (id_performance, id_member) values (:id_performance, :id_member)");
-  foreach ($_POST['name'] as $id_lang) {
-    $stmt->bindParam(':id_performance', $id_user);
-    $stmt->bindParam(':id_member', $id_lang);
-    $id_user = $formId;
-    $stmt->execute();
-}
+      session_start() && !empty($_SESSION['id'])) {
+
+      $formId = $_SESSION['id'];
+    
+      $stmt = $db->prepare("UPDATE performances SET date = :name, place = :place WHERE id = :id");
+      $stmt -> execute(['name'=>$_POST['day'] . '.' . $_POST['month'] . '.' . $_POST['year'],'place'=>$stad, 'id' => $formId]);
+      
+      $stmt = $db->prepare("DELETE from performances_members WHERE id_performance = :id");
+      $stmt -> execute([ 'id' => $formId]);
+      $stmt = $db->prepare("INSERT into performances_members (id_performance, id_member) values (:id_performance, :id_member)");
+      foreach ($_POST['name'] as $id_lang) {
+        $stmt->bindParam(':id_performance', $id_user);
+        $stmt->bindParam(':id_member', $id_lang);
+        $id_user = $formId;
+        $stmt->execute();
+    }
 
   }
 

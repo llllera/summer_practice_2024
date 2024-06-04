@@ -8,13 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!empty($_COOKIE['save'])) {
       setcookie('save', '', 100000);
-      echo '1 ' .$_COOKIE['name_value'];
       $messages[] = 'Спасибо, результаты сохранены.';
       setcookie('name_value', '', time() - 3600);
-      print('immimim\n');
       setcookie('phone_value', '', time() - 3600);
       setcookie('sport_value', '', time() - 3600);
-      echo '2 ' .$_COOKIE['name_value'];
       if(session_start()){
         session_destroy();}
     }
@@ -59,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
   $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
   $values['sport'] = empty($_COOKIE['sport_value']) ? '' : $_COOKIE['sport_value'];
-  echo '3 ' .$_COOKIE['name_value'];
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
@@ -147,12 +143,12 @@ else {
 
     include('../data.php');
     if (!empty($_COOKIE[session_name()]) &&
-    session_start() && !empty($_SESSION['id'])) {
+      session_start() && !empty($_SESSION['id'])) {
 
-    $formId = $_SESSION['id'];
-    
-    $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
-    $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
+      $formId = $_SESSION['id'];
+      
+      $stmt = $db->prepare("UPDATE sportsmen SET name = :name, phone = :phone, sport = :sport WHERE id = :id");
+      $stmt -> execute(['name'=>$name,'phone'=>$phone, 'sport'=>$sport,'id' => $formId]);
   }
 
   else {

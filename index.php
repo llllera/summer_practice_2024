@@ -55,17 +55,13 @@
                 <?php $people=selectAll('types_of_sports');
                 foreach ($people as $pp) : ?>
                 <tr class="item_row">
-                    <td><?php echo $pp['name']; ?></td>
-                        <form action="" method="post">
-                            <td class="edit">
-                                <button  class="but" name="change" type="submit">Редактировать</button>
-                            </td>
-                            <td class="edit">
-                                <button class="but" name="delete" type="submit">Удалить</button>
-                                <input name="id" value="<?php echo $pp['id']; ?>" type="hidden" />
-                            </td>
+                    <form action="" method="post">
+                            <td><input name="name" value="<?php echo $pp['name']; ?>"></td>
+                            <td class="edit"><button class="but" name="change" type="submit">Редактировать</button></td>
+                            <td class="edit"><button class="but" name="delete" type="submit">Удалить</button>
+                                <input name="id" value="<?php echo $pp['id']; ?>" type="hidden" /></td>
                         </form>
-                    
+                        
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -81,12 +77,12 @@
                 <?php $people=selectAll('stadions');
                 foreach ($people as $pp) : ?>
                 <tr class="item_row">
-                    <td><?php echo $pp['name']; ?></td>
-                        <form action="" method="post">
+                    <form action="" method="post">
+                        <td><input name="name" value="<?php echo $pp['name']; ?>"></td>
                         <td class="edit"><button class="but" name="change" type="submit">Редактировать</button></td>
                         <td class="edit"><button class="but" name="delete" type="submit">Удалить</button>
                             <input name="id" value="<?php echo $pp['id']; ?>" type="hidden" /></td>
-                        </form>
+                    </form>
                     
                 </tr>
                 <?php endforeach; ?>
