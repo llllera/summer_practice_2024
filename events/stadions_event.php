@@ -5,13 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['change'] )) {
         $id = $_POST['id'];
     try {
-        $stmt = $db->prepare("SELECT name FROM stadions where id = ?");
+        $stmt = $db->prepare("SELECT * FROM stadions where id = ?");
         $stmt->execute([$id]);
-        $name = $stmt->fetch();
-        $string = json_encode($name);
-        echo $string;
-        $stmt = $db->prepare("UPDATE performances SET place = :place where place = :id");
-        $stmt -> execute(['place'=>$_POST['name'],'id' => $name]);
+        $row = $stmt->fetch();
+       
+            $stmt = $db->prepare("UPDATE performances SET place = :place where place = :id");
+            $stmt -> execute(['place'=>$_POST['name'],'id' => $row['name']]);}
         $stmt = $db->prepare("UPDATE stadions SET name = :name where id = :id");
         $stmt -> execute(['name'=>$_POST['name'],'id' => $id]);
         }
