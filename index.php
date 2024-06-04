@@ -77,7 +77,7 @@
                 <?php $people=selectAll('stadions');
                 foreach ($people as $pp) : ?>
                 <tr class="item_row">
-                    <form action="" method="post">
+                    <form action="events/stadions_event.php" method="post">
                         <td><input name="name" value="<?php echo $pp['name']; ?>"></td>
                         <td class="edit"><button class="but" name="change" type="submit">Редактировать</button></td>
                         <td class="edit"><button class="but" name="delete" type="submit">Удалить</button>

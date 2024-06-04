@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['change'] )) {
         $id = $_POST['id'];
     try {
-        $stmt = $db->prepare("UPDATE types_of_sports SET name = :name where id = :id");
+        $stmt = $db->prepare("UPDATE stadions SET name = :name where id = :id");
         $stmt -> execute(['name'=>$_POST['name'],'id' => $id]);
         }
     catch(PDOException $e){
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (isset($_POST['delete'] )) {
         try {
             $id = $_POST['id'];
-            $stmt = $db->prepare("DELETE FROM types_of_sports where id = ?");
+            $stmt = $db->prepare("DELETE FROM stadions where id = ?");
             $stmt->execute([$id]);
             
         }
