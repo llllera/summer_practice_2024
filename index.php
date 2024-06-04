@@ -55,7 +55,7 @@
                 <?php $people=selectAll('types_of_sports');
                 foreach ($people as $pp) : ?>
                 <tr class="item_row">
-                    <form action="" method="post">
+                    <form action="events/types_of_sports_event.php" method="post">
                             <td><input name="name" value="<?php echo $pp['name']; ?>"></td>
                             <td class="edit"><button class="but" name="change" type="submit">Редактировать</button></td>
                             <td class="edit"><button class="but" name="delete" type="submit">Удалить</button>
@@ -116,7 +116,7 @@
                 <td><?php echo $pp['date']; ?></td>
                 <td><?php echo $pp['place']; ?></td>
                
-                    <form action="" method="post">
+                    <form action="events/performances_event.php" method="post">
                     <td class="edit"><button class="but" name="change" type="submit">Редактировать</button></td>
                     <td class="edit"><button class="but" name="delete" type="submit">Удалить</button>
                         <input name="id" value="<?php echo $pp['id']; ?>" type="hidden" /></td>
@@ -125,7 +125,7 @@
             </tr>
             <?php endforeach; ?>
             <tr class="add">
-                            <td colspan="5"><button class="but" onclick="document.location='events/form_performances_event.php'" name="change" id="add" type="submit">Добавить</button></td>
+                            <td colspan="5"><button class="but" onclick="document.location='events/form_perfomances_event.php'" name="change" id="add" type="submit">Добавить</button></td>
                         </tr>
         </tbody>
             

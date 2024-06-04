@@ -49,6 +49,12 @@ button {
 .edit{
     width: 12%;
 }
+input{
+  font-family: Verdana, Geneva, sans-serif;
+  background-color: transparent;
+  font-size: 16px;
+  text-align: center;
+}
 .table {
     display: none;
     position: relative;
