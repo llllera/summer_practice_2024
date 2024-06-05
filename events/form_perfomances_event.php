@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['month'] = empty($_COOKIE['month_value']) ? '' : $_COOKIE['month_value'];
     $values['day'] = empty($_COOKIE['day_value']) ? '' : $_COOKIE['day_value'];
     $values['stad'] = empty($_COOKIE['stad_value']) ? '' : $_COOKIE['stad_value'];
+    echo 'in this';
     setcookie('error', '', 100000);
   }
 
