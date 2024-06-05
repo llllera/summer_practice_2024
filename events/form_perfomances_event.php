@@ -50,9 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['month'] = empty($_COOKIE['month_value']) ? '' : $_COOKIE['month_value'];
     $values['day'] = empty($_COOKIE['day_value']) ? '' : $_COOKIE['day_value'];
     $values['stad'] = empty($_COOKIE['stad_value']) ? '' : $_COOKIE['stad_value'];
+    setcookie('error', '', 100000);
   }
-  else {setcookie('error', '', 100000);}
-
 
   if (!empty($_COOKIE[session_name()]) &&
       session_start() && !empty($_SESSION['id'])) {
